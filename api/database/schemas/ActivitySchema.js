@@ -3,13 +3,13 @@ const {Schema} = require("mongoose")
 module.exports = new Schema({
     classId: {
         type:Schema.Types.ObjectId,
-        required:true,
-        ref:"Class"
+        ref:"Class",
+        required:true
     },
     subjectId: {
         type:Schema.Types.ObjectId,
-        required:true,
-        ref:"Subject"
+        ref:"Subject",
+        required:true
     },
     date: {
         type:Date,

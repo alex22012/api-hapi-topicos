@@ -11,8 +11,8 @@ module.exports = new Schema({
     },
     classId: {
         type:Schema.Types.ObjectId,
-        required:true,
-        ref:"Class"
+        ref:"Class",
+        required:true
     },
     email: {
         type:String,

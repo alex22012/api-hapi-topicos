@@ -7,12 +7,12 @@ module.exports = new Schema({
     },
     teacherId: {
         type:Schema.Types.ObjectId,
-        required:true,
-        ref:"Teacher"
+        ref:"Teacher",
+        required:true
     },
     classId: {
         type:Schema.Types.ObjectId,
-        required:true,
-        ref:"Class"
+        ref:"Class",
+        required:true
     }
 })

@@ -2,7 +2,7 @@ const {Schema} = require("mongoose")
 
 module.exports = new Schema({
     name:{
-        Type:String,
+        type:String,
         required:true
     },
     birthDate: {
@@ -19,8 +19,8 @@ module.exports = new Schema({
     },
     classId: {
         type:Schema.Types.ObjectId,
-        required:true,
-        ref:"Class"
+        ref:"Class",
+        required:true
     },
     enrollment: {
         type:Number,

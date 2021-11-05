@@ -1,13 +1,17 @@
 const createObjectId = require("../services/createObjectId")
 const StudentModel = require("../database/models/StudentModel")
 const GradeModel = require("../database/models/GradeModel")
+const verifyToken = require("../services/verifyToken")
 
 module.exports = {
     async getStudents(request, h) {
         try {
+            /*if(!verifyToken(request, h))
+                return h.response("Token malformated").code(401)*/
             const resp = await StudentModel.find({}).exec()
             return h.response(resp).code(200)
         } catch (error) {
+            console.log(error)
             return h.response("An error has occurred in the server").code(500)
         }
     },

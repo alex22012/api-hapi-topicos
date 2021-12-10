@@ -2,19 +2,19 @@ const jwt = require("jsonwebtoken")
 const JWTSECRET = require("./jwtsecret")
 
 module.exports = function(request, h){
-    let authString = request.headers.authorization.split(" ")
+    let authString = ""
+    if(request.headers.authorization !== undefined)
+        authString = request.headers.authorization.split(" ")
+    else 
+        return false
     if(authString[0] === "Bearer"){
-        try {
-            jwt.verify(authString[1], (err)=> {
-                if(err){
-                    return false
-                }else {
-                    return true
-                }
-            })
-        } catch (error) {
-            return false
-        }
+        jwt.verify(authString[1], (err)=> {
+            if(err){
+                return false
+            }else {
+                return true
+            }
+        })
     }else 
         return false
 }

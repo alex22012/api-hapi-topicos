@@ -56,9 +56,9 @@ module.exports = {
                 const resp = await SubjectModel.find({classId:_id})
                 return h.response(resp).code(200)
             }else 
-                return h.code(400)
+                return h.response("Id inválido").code(400)
         } catch (error) {
-            return h.code(500)
+            return h.response(error).code(500)
         }
     },
     async getClassTeachers(request, h){
@@ -82,9 +82,9 @@ module.exports = {
                 const resp = await ActivityModel.find({classId:_id})
                 return h.response(resp).code(200)
             }else 
-                return h.code(400)
+                return h.response().code(400)
         } catch (error) {
-            return h.code(500)
+            return h.response().code(500)
         }  
     },
     async updateClass(request, h) {

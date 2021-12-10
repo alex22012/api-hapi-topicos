@@ -1,3 +1,5 @@
+const LoginHandler = require("../handlers/LoginHandler")
+
 module.exports = [
     //Login do adm
     {

@@ -1,6 +1,7 @@
 const TeacherModel = require("../database/models/TeacherModel")
 const createObjectId = require("../services/createObjectId")
 const SubjectModel = require("../database/models/SubjectModel")
+const ClassModel = require("../database/models/ClassModel")
 
 module.exports = {
     async getTeachers(request, h) {
@@ -13,9 +14,11 @@ module.exports = {
     },
     async createTeacher(request, h) {
         try {
+            console.log(request.payload)
             const resp = await TeacherModel.create(request.payload)
             return h.response(resp._id).code(201)
         } catch (error) {
+            console.log(error)
             return h.response("Erro").code(500)
         }
     },
@@ -33,17 +36,35 @@ module.exports = {
             return h.response("Erro").code(500)
         }
     },
-    async getTeacherSubjects(request, h){
+    async getTeacherSubject(request, h){
+        try {
+            let {id} = request.params
+            let _id = createObjectId(id)
+            //Pego o professor
+            const teacher = await TeacherModel.findById(_id).exec()
+            const subjectId = teacher.subjectId
+            if(_id){
+                const resp = await SubjectModel.find({_id:subjectId})
+                return h.response(resp).code(200)
+            }else 
+                return h.response().code(400)
+        } catch (error) {
+            return h.response().code(500)
+        }
+    },
+    async getTeacherClass(request, h){
         try {
             let {id} = request.params
             let _id = createObjectId(id)
             if(_id){
-                const resp = await SubjectModel.find({teacherId:_id}).exec()
+                const teacher = await TeacherModel.findById(_id).exec()
+                const classId = teacher.classId
+                const resp = await ClassModel.findOne({_id:classId})
                 return h.response(resp).code(200)
             }else 
-                return h.code(400)
+                return h.response().code(400)
         } catch (error) {
-            return h.code(400)
+            return h.response().code(500)
         }
     },
     async updateTeacher(request, h){

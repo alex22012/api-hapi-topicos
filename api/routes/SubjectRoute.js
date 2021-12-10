@@ -21,4 +21,9 @@ module.exports = [
         path:"/subject/{id}/activitys",
         handler:(request, h) => SubjectHandler.getSubjectActivitys(request, h)
     },
+    {
+        method:"GET",
+        path:"/subject/{id}/pending-activitys",
+        handler:(request, h) => SubjectHandler.getPendingActivitys(request, h)
+    }
 ]

@@ -10,14 +10,15 @@ module.exports = {
             const admin = await AdminModel.findOne({email})
             if(admin){
                 if(admin.password === password){
-                    return h.response({admin, token:tokenGenerator(email)})
+                    return h.response({admin, token:tokenGenerator(email)}).code(200)
                 }else 
-                    return h.code(401)
+                    return h.response().code(401)
             }else {
-                return h.code(404)
+                return h.response().code(404)
             }
         } catch (error) {
-            return h.code(500)
+            console.log(error)
+            return h.response().code(500)
         }
     },
     async teacher(request, h) {
@@ -26,14 +27,14 @@ module.exports = {
             const teacher = await TeacherModel.findOne({email})
             if(teacher){
                 if(teacher.password === password){
-                    return h.response({teacher, token:tokenGenerator(email)})
+                    return h.response({teacher, token:tokenGenerator(email)}).code(200)
                 }else 
-                    return h.code(401)
+                    return h.response().code(401)
             }else {
-                return h.code(404)
+                return h.response().code(404)
             }
         } catch (error) {
-            return h.code(500)
+            return h.response().code(500)
         }
     },
     async student(request, h) {
@@ -42,7 +43,7 @@ module.exports = {
             const student = await StudentModel.findOne({email})
             if(student){
                 if(student.password === password){
-                    return h.response({student, token:tokenGenerator(email)})
+                    return h.response({student, token:tokenGenerator(email)}).code(200)
                 }else 
                     return h.code(401)
             }else {

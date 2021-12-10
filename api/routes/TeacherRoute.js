@@ -18,8 +18,13 @@ module.exports = [
     },
     {
         method:"GET",
-        path:"/teacher/{id}/subjects",
-        handler:(request, h) => TeacherHandler.getTeacherSubjects(request, h)
+        path:"/teacher/{id}/subject",
+        handler:(request, h) => TeacherHandler.getTeacherSubject(request, h)
+    },
+    {
+        method:"GET",
+        path:"/teacher/{id}/class",
+        handler:(request, h) => TeacherHandler.getTeacherClass(request, h)
     },
     {
         method:"PUT",

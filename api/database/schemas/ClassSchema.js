@@ -5,6 +5,7 @@ module.exports = new Schema({
         type:String,
         required:true
     },
+    //Ano da turma
     grade: {
         type:Number,
         required:true

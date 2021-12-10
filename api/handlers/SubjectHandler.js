@@ -43,5 +43,19 @@ module.exports = {
         } catch (error) {
             return h.code(500)
         }
+    },
+    async getPendingActivitys(request, h) {
+        try {
+            let {id} = request.params
+            let _id = createObjectId(id)
+            if(_id){
+                const resp = await ActivityModel.find({subjectId:_id, isCorrected:false})
+                return h.response(resp).code(200)
+            }else 
+                return h.response().code(400)
+        } catch (error) {
+            console.log(error)
+            return h.response().code(500)
+        }
     }
 }

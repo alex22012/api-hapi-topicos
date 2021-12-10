@@ -4,10 +4,12 @@ const createObjectId = require("../services/createObjectId")
 module.exports = {
     async createGrade(request, h){
         try {
+            console.log(request.payload)
             const resp = await GradeModel.create(request.payload)
             return h.response(resp).code(201)
         } catch (error) {
-            return h.code(500)
+            console.log(error)
+            return h.response().code(500)
         }
     },
     async updateGrade(request, h) {

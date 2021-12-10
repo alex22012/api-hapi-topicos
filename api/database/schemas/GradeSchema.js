@@ -15,4 +15,13 @@ module.exports = new Schema({
         ref:"Subject",
         required:true
     },
+    activityId: {
+        type:Schema.Types.ObjectId,
+        ref:"Activity",
+        required:true
+    },
+    activityName: {
+        type:String,
+        required:true
+    }
 })

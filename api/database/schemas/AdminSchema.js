@@ -1,13 +1,12 @@
 const {Schema} = require("mongoose")
 
 module.exports = new Schema({
-    subjectName: {
+    email: {
         type:String,
         required:true
     },
-    classId: {
-        type:Schema.Types.ObjectId,
-        ref:"Class",
+    password:{
+        type:String,
         required:true
-    }
+    },
 })

@@ -14,6 +14,11 @@ module.exports = new Schema({
         ref:"Class",
         required:true
     },
+    subjectId: {
+        type:Schema.Types.ObjectId, 
+        ref:"Subject",
+        required:true
+    },
     email: {
         type:String,
         required:true

@@ -6,17 +6,30 @@ module.exports = new Schema({
         ref:"Class",
         required:true
     },
+    body: {
+        type:String,
+        required:true
+    },
     subjectId: {
         type:Schema.Types.ObjectId,
         ref:"Subject",
         required:true
     },
-    date: {
+    startDate: {
+        type:Date,
+        required:true
+    },
+    endDate: {
         type:Date,
         required:true
     },
     isTest: {
         type:Boolean,
         required:true
-    }
+    },
+    isCorrected: {
+        type:Boolean,
+        required:true
+    },
+   
 })
